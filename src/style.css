@@ -9,17 +9,37 @@ html, body {
   max-height: 100vh;
 }
 
-/* light theme override — default (no class) stays dark, lib's native scheme */
+/* ----- Light theme overrides ----- */
 .f3.light-theme {
   --background-color: #f4f4f4;
   --text-color: #111;
 }
 
-#theme-toggle {
+/* 🆕 Fix connector lines in light theme */
+.f3.light-theme .link line,
+.f3.light-theme .link path {
+  stroke: #555 !important;   /* dark grey, visible on white */
+}
+.f3.light-theme .link text {
+  fill: #111 !important;
+}
+
+/* 🆕 Hide language toggle button */
+#lang-toggle {
+  display: none !important;
+}
+
+/* ----- Toolbar styling ----- */
+#toolbar {
   position: fixed;
   top: 12px;
   left: 12px;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#toolbar button {
   padding: 8px 14px;
   border: none;
   border-radius: 6px;
@@ -28,12 +48,46 @@ html, body {
   background: #333;
   color: #fff;
 }
-body:has(.f3.light-theme) #theme-toggle {
+body:has(.f3.light-theme) #toolbar button {
   background: #ddd;
   color: #111;
 }
 
-/* detail side panel */
+#search-cont input {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 180px;
+  background: #333;
+  color: #fff;
+}
+body:has(.f3.light-theme) #search-cont input {
+  background: #ddd;
+  color: #111;
+}
+#search-cont .f3-autocomplete-items {
+  background: #222;
+  color: #fff;
+  border-radius: 6px;
+  margin-top: 4px;
+  overflow: hidden;
+  max-height: 240px;
+  overflow-y: auto;
+}
+body:has(.f3.light-theme) #search-cont .f3-autocomplete-items {
+  background: #fafafa;
+  color: #111;
+}
+#search-cont .f3-autocomplete-item {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+#search-cont .f3-autocomplete-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ----- Detail panel ----- */
 #detail-panel {
   position: fixed;
   top: 0;
@@ -67,7 +121,6 @@ body:has(.f3.light-theme) #detail-panel {
 #detail-content dt {
   font-weight: bold;
   margin-top: 10px;
-  text-transform: capitalize;
 }
 #detail-content dd {
   margin: 2px 0 0 0;

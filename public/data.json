@@ -1,36 +1,69 @@
 [
-  {
-    "id": "0",
-    "data": {
-      "first name": "John",
-      "last name": "Doe",
-      "gender": "M",
-      "birthday": "1980",
-      "job": "Carpenter",
-      "notes": "Loved fishing on weekends."
-    },
-    "rels": { "spouses": ["1"], "children": ["2"] }
-  },
-  {
-    "id": "1",
-    "data": {
-      "first name": "Jane",
-      "last name": "Doe",
-      "gender": "F",
-      "birthday": "1982",
-      "job": "Teacher"
-    },
-    "rels": { "spouses": ["0"], "children": ["2"] }
-  },
-  {
-    "id": "2",
-    "data": {
-      "first name": "Alex",
-      "last name": "Doe",
-      "gender": "M",
-      "birthday": "2005",
-      "job": "Student"
-    },
-    "rels": { "parents": ["0", "1"] }
-  }
+  { "id": "joao_filipe", "data": { "first name": "João Filipe", "last name": "Silva de Almeida", "gender": "M", "born": "19 July 2002" }, "rels": { "parents": ["rui", "tania"] } },
+  { "id": "david", "data": { "first name": "David", "last name": "Silva de Almeida", "gender": "M", "born": "20 September 2004" }, "rels": { "parents": ["rui", "tania"] } },
+  { "id": "rui", "data": { "first name": "Rui Manuel", "last name": "dos Santos Almeida", "gender": "M", "born": "27 Janeiro 1970" }, "rels": { "spouses": ["tania"], "children": ["joao_filipe", "david"] } },
+  { "id": "tania", "data": { "first name": "Tânia", "last name": "José Marques Silva de Almeida", "gender": "F", "born": "13 Setembro 1974" }, "rels": { "spouses": ["rui"], "children": ["joao_filipe", "david"], "parents": ["martinho", "cidalia"] } },
+
+  { "id": "martinho", "data": { "first name": "Martinho", "last name": "Gomes da Silva", "gender": "M" }, "rels": { "spouses": ["cidalia"], "children": ["tania", "edgar", "ivo", "magna", "mariano", "nuno"], "parents": ["jose_silva_pai", "maria_mae_martinho"] } },
+  { "id": "cidalia", "data": { "first name": "Cidália", "last name": "Rodrigues Marques", "gender": "F" }, "rels": { "spouses": ["martinho"], "children": ["tania", "edgar", "ivo", "magna", "mariano", "nuno"], "parents": ["jose_marques", "maria_rodrigues_cro"] } },
+
+  { "id": "edgar", "data": { "first name": "José Edgar", "last name": "Marques da Silva", "gender": "M" }, "rels": { "parents": ["martinho", "cidalia"], "spouses": ["regina"], "children": ["pedro_ns", "lucas_ns"] } },
+  { "id": "ivo", "data": { "first name": "Ivo José", "last name": "Marques da Silva", "gender": "M", "died": "2018", "notes": "Morreu internado com esquizofrenia." }, "rels": { "parents": ["martinho", "cidalia"] } },
+  { "id": "magna", "data": { "first name": "Magna José", "last name": "Marques Silva Vasconcelos", "gender": "F", "born": "7 Outubro 1965" }, "rels": { "parents": ["martinho", "cidalia"], "spouses": ["paulo_v"], "children": ["sara_v", "rui_v", "antonio_v"] } },
+  { "id": "mariano", "data": { "first name": "Mariano José", "last name": "Marques da Silva", "gender": "M", "born": "21 Setembro 1971", "died": "2004", "notes": "Morreu de pneumonia." }, "rels": { "parents": ["martinho", "cidalia"], "spouses": ["luisa_f"], "children": ["marta_fs"] } },
+  { "id": "nuno", "data": { "first name": "Nuno Rodrigo", "last name": "Marques da Silva", "gender": "M", "born": "17 Março 1980" }, "rels": { "parents": ["martinho", "cidalia"] } },
+
+  { "id": "regina", "data": { "first name": "Regina", "last name": "Nascimento Silva", "gender": "F" }, "rels": { "spouses": ["edgar"], "children": ["pedro_ns", "lucas_ns"] } },
+  { "id": "pedro_ns", "data": { "first name": "Pedro", "last name": "Nascimento Silva", "gender": "M" }, "rels": { "parents": ["edgar", "regina"] } },
+  { "id": "lucas_ns", "data": { "first name": "Lucas", "last name": "Nascimento Silva", "gender": "M" }, "rels": { "parents": ["edgar", "regina"] } },
+
+  { "id": "paulo_v", "data": { "first name": "Paulo", "last name": "Vasconcelos", "gender": "M" }, "rels": { "spouses": ["magna"], "children": ["sara_v", "rui_v", "antonio_v"] } },
+  { "id": "sara_v", "data": { "first name": "Sara Isabel", "last name": "Silva Vasconcelos", "gender": "F" }, "rels": { "parents": ["magna", "paulo_v"] } },
+  { "id": "rui_v", "data": { "first name": "Rui Martinho", "last name": "Silva Vasconcelos", "gender": "M" }, "rels": { "parents": ["magna", "paulo_v"] } },
+  { "id": "antonio_v", "data": { "first name": "António", "last name": "Silva Vasconcelos", "gender": "M" }, "rels": { "parents": ["magna", "paulo_v"] } },
+
+  { "id": "luisa_f", "data": { "first name": "Luisa", "last name": "Fosquinha", "gender": "F" }, "rels": { "spouses": ["mariano"], "children": ["marta_fs"] } },
+  { "id": "marta_fs", "data": { "first name": "Marta", "last name": "Fosquinha Silva", "gender": "F" }, "rels": { "parents": ["mariano", "luisa_f"], "spouses": ["sabrina_s"] } },
+  { "id": "sabrina_s", "data": { "first name": "Sabrina", "last name": "Silva", "gender": "F", "notes": "Brasileira." }, "rels": { "spouses": ["marta_fs"] } },
+
+  { "id": "jose_silva_pai", "data": { "first name": "José", "last name": "Silva", "gender": "M", "job": "Carpinteiro", "notes": "Morreu de alcoolismo, ainda novo." }, "rels": { "spouses": ["maria_mae_martinho"], "children": ["martinho", "joao_gs", "vera_gs", "maria_ags", "olivia_gs"] } },
+  { "id": "maria_mae_martinho", "data": { "first name": "Maria", "last name": "", "gender": "F" }, "rels": { "spouses": ["jose_silva_pai"], "children": ["martinho", "joao_gs", "vera_gs", "maria_ags", "olivia_gs"] } },
+  { "id": "joao_gs", "data": { "first name": "João", "last name": "Gomes da Silva", "gender": "M", "notes": "Teve 7 filhos; todos vivem nos Estados Unidos (Massachusetts)." }, "rels": { "parents": ["jose_silva_pai", "maria_mae_martinho"] } },
+  { "id": "vera_gs", "data": { "first name": "Vera", "last name": "Gomes da Silva", "gender": "F" }, "rels": { "parents": ["jose_silva_pai", "maria_mae_martinho"] } },
+  { "id": "maria_ags", "data": { "first name": "Maria Ascenção", "last name": "Gomes da Silva", "gender": "F" }, "rels": { "parents": ["jose_silva_pai", "maria_mae_martinho"] } },
+  { "id": "olivia_gs", "data": { "first name": "Olivia", "last name": "Gomes da Silva", "gender": "F" }, "rels": { "parents": ["jose_silva_pai", "maria_mae_martinho"] } },
+
+  { "id": "jose_marques", "data": { "first name": "José", "last name": "Marques", "gender": "M", "job": "Barbeiro e agricultor; trabalhava vimes.", "notes": "Emigrou para o Curaçao; trabalhou numa refinaria." }, "rels": { "spouses": ["maria_rodrigues_cro"], "children": ["cidalia", "nivalda", "almerino", "zelia"] } },
+  { "id": "maria_rodrigues_cro", "data": { "first name": "Maria", "last name": "Rodrigues Cró", "gender": "F", "job": "Massagista e bordadeira; criava galinhas e vendia ovos.", "notes": "Fazia rezas para afastar o mau-olhado." }, "rels": { "spouses": ["jose_marques"], "children": ["cidalia", "nivalda", "almerino", "zelia"] } },
+  { "id": "nivalda", "data": { "first name": "Nivalda", "last name": "Rodrigues Marques Rebolo", "gender": "F" }, "rels": { "parents": ["jose_marques", "maria_rodrigues_cro"] } },
+
+  { "id": "almerino", "data": { "first name": "Almerino", "last name": "Rodrigues Marques", "gender": "M" }, "rels": { "parents": ["jose_marques", "maria_rodrigues_cro"], "spouses": ["odilia", "almerino_partner2"], "children": ["sandro_m", "carlo_m", "helder_m", "mariana_m2", "carolina_m2"] } },
+  { "id": "odilia", "data": { "first name": "Odília", "last name": "", "gender": "F" }, "rels": { "spouses": ["almerino"], "children": ["sandro_m", "carlo_m", "helder_m"] } },
+  { "id": "sandro_m", "data": { "first name": "Sandro", "last name": "Marques", "gender": "M" }, "rels": { "parents": ["almerino", "odilia"], "spouses": ["sandro_wife"], "children": ["sandro_son", "sandro_daughter"] } },
+  { "id": "sandro_wife", "data": { "first name": "Desconhecida", "last name": "", "gender": "F", "notes": "Esposa de Sandro Marques; nome desconhecido." }, "rels": { "spouses": ["sandro_m"], "children": ["sandro_son", "sandro_daughter"] } },
+  { "id": "sandro_son", "data": { "first name": "Desconhecido", "last name": "Marques", "gender": "M", "notes": "Filho de Sandro Marques; nome desconhecido." }, "rels": { "parents": ["sandro_m", "sandro_wife"] } },
+  { "id": "sandro_daughter", "data": { "first name": "Desconhecida", "last name": "Marques", "gender": "F", "notes": "Filha de Sandro Marques; nome desconhecido." }, "rels": { "parents": ["sandro_m", "sandro_wife"] } },
+  { "id": "carlo_m", "data": { "first name": "Carlo", "last name": "Marques", "gender": "M" }, "rels": { "parents": ["almerino", "odilia"], "spouses": ["carlo_wife"], "children": ["carlo_son", "carlo_daughter"] } },
+  { "id": "carlo_wife", "data": { "first name": "Desconhecida", "last name": "", "gender": "F", "notes": "Esposa de Carlo Marques; nome desconhecido." }, "rels": { "spouses": ["carlo_m"], "children": ["carlo_son", "carlo_daughter"] } },
+  { "id": "carlo_son", "data": { "first name": "Desconhecido", "last name": "Marques", "gender": "M", "notes": "Filho de Carlo Marques; nome desconhecido." }, "rels": { "parents": ["carlo_m", "carlo_wife"] } },
+  { "id": "carlo_daughter", "data": { "first name": "Desconhecida", "last name": "Marques", "gender": "F", "notes": "Filha de Carlo Marques; nome desconhecido." }, "rels": { "parents": ["carlo_m", "carlo_wife"] } },
+  { "id": "helder_m", "data": { "first name": "Hélder", "last name": "Marques", "gender": "M" }, "rels": { "parents": ["almerino", "odilia"], "spouses": ["carolina_hm"], "children": ["helder_daughter"] } },
+  { "id": "carolina_hm", "data": { "first name": "Carolina", "last name": "", "gender": "F" }, "rels": { "spouses": ["helder_m"], "children": ["helder_daughter"] } },
+  { "id": "helder_daughter", "data": { "first name": "Desconhecida", "last name": "Marques", "gender": "F", "notes": "Filha de Hélder Marques e Carolina; nome desconhecido." }, "rels": { "parents": ["helder_m", "carolina_hm"] } },
+  { "id": "almerino_partner2", "data": { "first name": "Desconhecida", "last name": "", "gender": "F", "notes": "Segunda companheira de Almerino Rodrigues Marques; nome desconhecido." }, "rels": { "spouses": ["almerino"], "children": ["mariana_m2", "carolina_m2"] } },
+  { "id": "mariana_m2", "data": { "first name": "Mariana", "last name": "Marques", "gender": "F" }, "rels": { "parents": ["almerino", "almerino_partner2"] } },
+  { "id": "carolina_m2", "data": { "first name": "Carolina", "last name": "Marques", "gender": "F" }, "rels": { "parents": ["almerino", "almerino_partner2"] } },
+
+  { "id": "zelia", "data": { "first name": "Zélia", "last name": "Rodrigues Marques", "gender": "F" }, "rels": { "parents": ["jose_marques", "maria_rodrigues_cro"], "spouses": ["celestino_r"], "children": ["reinaldo_r", "michael_r", "suraida_r", "almerina_rc"] } },
+  { "id": "celestino_r", "data": { "first name": "Celestino", "last name": "Rodrigues", "gender": "M" }, "rels": { "spouses": ["zelia"], "children": ["reinaldo_r", "michael_r", "suraida_r", "almerina_rc"] } },
+  { "id": "reinaldo_r", "data": { "first name": "Reinaldo", "last name": "Rodrigues", "gender": "M", "notes": "Foi viver para a Holanda." }, "rels": { "parents": ["zelia", "celestino_r"], "spouses": ["ferdinand_r"] } },
+  { "id": "ferdinand_r", "data": { "first name": "Ferdinand", "last name": "", "gender": "M" }, "rels": { "spouses": ["reinaldo_r"] } },
+  { "id": "michael_r", "data": { "first name": "Michael", "last name": "Rodrigues", "gender": "M" }, "rels": { "parents": ["zelia", "celestino_r"] } },
+  { "id": "suraida_r", "data": { "first name": "Suraida", "last name": "Marques Rodrigues", "gender": "F" }, "rels": { "parents": ["zelia", "celestino_r"], "spouses": ["suraida_husband"], "children": ["vitoria_sr", "lorenzo_sr"] } },
+  { "id": "suraida_husband", "data": { "first name": "Desconhecido", "last name": "", "gender": "M", "notes": "Brasileiro e do Curaçao; nome desconhecido." }, "rels": { "spouses": ["suraida_r"], "children": ["vitoria_sr", "lorenzo_sr"] } },
+  { "id": "vitoria_sr", "data": { "first name": "Vitória", "last name": "", "gender": "F" }, "rels": { "parents": ["suraida_r", "suraida_husband"] } },
+  { "id": "lorenzo_sr", "data": { "first name": "Lorenzo", "last name": "", "gender": "M" }, "rels": { "parents": ["suraida_r", "suraida_husband"] } },
+  { "id": "almerina_rc", "data": { "first name": "Almerina", "last name": "Rodrigues Costa", "gender": "F" }, "rels": { "parents": ["zelia", "celestino_r"], "spouses": ["jose_costa"], "children": ["liz_ancelly"] } },
+  { "id": "jose_costa", "data": { "first name": "José", "last name": "Costa", "gender": "M" }, "rels": { "spouses": ["almerina_rc"], "children": ["liz_ancelly"] } },
+  { "id": "liz_ancelly", "data": { "first name": "Liz-Ancelly", "last name": "da Silva Costa", "gender": "F", "notes": "Estudou Economia na Holanda." }, "rels": { "parents": ["almerina_rc", "jose_costa"] } }
 ]
