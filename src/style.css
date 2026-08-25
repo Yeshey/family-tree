@@ -9,27 +9,54 @@ html, body {
   max-height: 100vh;
 }
 
-/* ----- Light theme overrides ----- */
+/* ---------- Light theme overrides ---------- */
 .f3.light-theme {
   --background-color: #f4f4f4;
   --text-color: #111;
+  /* several f3 versions read one of these variables for the link stroke */
+  --link-color: #555;
+  --line-color: #555;
+  --stroke-color: #555;
+  background-color: #f4f4f4;
+  color: #111;
 }
 
-/* 🆕 Fix connector lines in light theme */
+/*
+  Aggressively force every connector line/path to dark grey on white bg.
+  We target every selector shape that f3 uses across versions:
+    .link, path.link, line.link, g.link path, g.links path, .links path …
+*/
+.f3.light-theme .link,
+.f3.light-theme path.link,
+.f3.light-theme line.link,
+.f3.light-theme .link path,
 .f3.light-theme .link line,
-.f3.light-theme .link path {
-  stroke: #555 !important;   /* dark grey, visible on white */
-}
-.f3.light-theme .link text {
-  fill: #111 !important;
+.f3.light-theme .links path,
+.f3.light-theme .links line,
+.f3.light-theme g.link path,
+.f3.light-theme g.link line,
+.f3.light-theme g.links path,
+.f3.light-theme g.links line,
+.f3.light-theme .tree path,
+.f3.light-theme .tree line {
+  stroke: #555 !important;
+  fill: none !important;
 }
 
-/* 🆕 Hide language toggle button */
+/* Make sure link labels / text are also legible */
+.f3.light-theme text,
+.f3.light-theme .link text,
+.f3.light-theme .card text {
+  fill: #111 !important;
+  color: #111 !important;
+}
+
+/* Hide language toggle button */
 #lang-toggle {
   display: none !important;
 }
 
-/* ----- Toolbar styling ----- */
+/* ---------- Toolbar styling ---------- */
 #toolbar {
   position: fixed;
   top: 12px;
@@ -87,7 +114,7 @@ body:has(.f3.light-theme) #search-cont .f3-autocomplete-items {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* ----- Detail panel ----- */
+/* ---------- Detail panel ---------- */
 #detail-panel {
   position: fixed;
   top: 0;
