@@ -13,7 +13,6 @@ html, body {
 .f3.light-theme {
   --background-color: #f4f4f4;
   --text-color: #111;
-  /* several f3 versions read one of these variables for the link stroke */
   --link-color: #555;
   --line-color: #555;
   --stroke-color: #555;
@@ -21,11 +20,6 @@ html, body {
   color: #111;
 }
 
-/*
-  Aggressively force every connector line/path to dark grey on white bg.
-  We target every selector shape that f3 uses across versions:
-    .link, path.link, line.link, g.link path, g.links path, .links path …
-*/
 .f3.light-theme .link,
 .f3.light-theme path.link,
 .f3.light-theme line.link,
@@ -43,7 +37,6 @@ html, body {
   fill: none !important;
 }
 
-/* Make sure link labels / text are also legible */
 .f3.light-theme text,
 .f3.light-theme .link text,
 .f3.light-theme .card text {
@@ -51,12 +44,11 @@ html, body {
   color: #111 !important;
 }
 
-/* Hide language toggle button */
 #lang-toggle {
   display: none !important;
 }
 
-/* ---------- Toolbar styling ---------- */
+/* ---------- Toolbar ---------- */
 #toolbar {
   position: fixed;
   top: 12px;
@@ -151,4 +143,29 @@ body:has(.f3.light-theme) #detail-panel {
 }
 #detail-content dd {
   margin: 2px 0 0 0;
+}
+
+/* ---------- Virtual root + x2 badge hiding ----------
+   The JS sweep in main.ts is the primary mechanism (it catches links
+   by attribute AND by position). These CSS rules are a belt-and-
+   suspenders backup that hide the root card before JS runs. */
+
+.f3 [data-d="__root__"],
+.f3 [data-id="__root__"],
+.f3 g.card[data-d="__root__"],
+.f3 g.card[data-id="__root__"],
+.f3 g[data-d="__root__"],
+.f3 g[data-id="__root__"] {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.f3 .card-duplicate,
+.f3 .duplicate-indicator,
+.f3 .copy-count,
+.f3 text.duplicate,
+.f3 text.copy {
+  display: none !important;
+  opacity: 0 !important;
 }
