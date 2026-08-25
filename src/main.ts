@@ -14,11 +14,35 @@ async function main() {
     .setOnHoverPathToMain()
 
   const f3EditTree = f3Chart.editTree()
-    .setFields(["first name", "last name", "birthday"])
+    .setFields(["first name", "last name", "birthday", "job", "notes"])
+
+  f3Card.setOnCardClick((e: MouseEvent, d: any) => {
+    f3Card.onCardClickDefault(e, d) // keep default recenter behavior
+    showDetails(d.data.data)
+  })
 
   f3Chart.updateTree({ initial: true })
 
   setupThemeToggle()
+  setupPanelClose()
+}
+
+function showDetails(fields: Record<string, string>) {
+  const content = document.getElementById('detail-content')!
+  const panel = document.getElementById('detail-panel')!
+
+  content.innerHTML = Object.entries(fields)
+    .filter(([key]) => key !== 'gender' && key !== 'avatar')
+    .map(([key, value]) => `<dt>${key}</dt><dd>${value}</dd>`)
+    .join('')
+
+  panel.classList.remove('hidden')
+}
+
+function setupPanelClose() {
+  document.getElementById('detail-close')!.addEventListener('click', () => {
+    document.getElementById('detail-panel')!.classList.add('hidden')
+  })
 }
 
 function setupThemeToggle() {
