@@ -1,0 +1,27 @@
+html, body { margin: 0; height: 100%; }
+#FamilyChart { width: 100%; height: 100vh; }
+
+/* light theme override — default (no class) stays dark, lib's native scheme */
+.f3.light-theme {
+  --background-color: #f4f4f4;
+  --text-color: #111;
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  background: #333;
+  color: #fff;
+}
+.light-theme ~ #theme-toggle,
+body:has(.f3.light-theme) #theme-toggle {
+  background: #ddd;
+  color: #111;
+}

@@ -1,0 +1,78 @@
+name: Weekly Dependency Update and Deploy
+
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-and-deploy:
+    name: Update Dependencies & Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read .nvmrc
+        id: node_version
+        run: echo "NODE_VERSION=$(cat .nvmrc | xargs)" >> $GITHUB_OUTPUT
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.node_version.outputs.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Configure Git User
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+
+      - name: Install Dependencies (Clean Install)
+        run: npm ci
+
+      - name: Check for Outdated Dependencies (Informational)
+        run: npm outdated || true
+
+      - name: Update Dependencies
+        run: npm update
+
+      - name: Check for file changes
+        id: check_changes
+        run: |
+          if git status --porcelain package-lock.json package.json | grep -qE '^\s?[AM]'; then
+            echo "changes_detected=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes_detected=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build Project
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        run: npm run build
+
+      - name: Commit Dependency Updates
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        run: |
+          git add package.json package-lock.json
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(deps): automatically update npm dependencies"
+          fi
+
+      - name: Push Changes to Main Branch
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        run: git push origin main
+
+      - name: Deploy to GitHub Pages
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          user_name: 'GitHub Actions Bot'
+          user_email: 'actions@github.com'
+          commit_message: "Deploy: ${{ github.event_name }} triggered by ${{ github.actor }} - ${{ github.sha }}"
