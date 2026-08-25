@@ -1,5 +1,7 @@
 # Family Tree
 
+https://yeshey.github.io/family-tree
+
 Interactive family tree, built with [family-chart](https://github.com/donatso/family-chart) + Vite + TS.
 
 **Live site:** https://Yeshey.github.io/family-tree
