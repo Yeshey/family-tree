@@ -1,0 +1,17 @@
+[
+  {
+    "id": "0",
+    "data": { "first name": "John", "last name": "Doe", "gender": "M" },
+    "rels": { "spouses": ["1"], "children": ["2"] }
+  },
+  {
+    "id": "1",
+    "data": { "first name": "Jane", "last name": "Doe", "gender": "F" },
+    "rels": { "spouses": ["0"], "children": ["2"] }
+  },
+  {
+    "id": "2",
+    "data": { "first name": "Alex", "last name": "Doe", "gender": "M" },
+    "rels": { "father": "0", "mother": "1" }
+  }
+]
