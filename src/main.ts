@@ -1,17 +1,19 @@
 import * as f3 from 'family-chart'
 import 'family-chart/styles/family-chart.css'
 import { getLang, t } from './i18n'
+import { showWholeTree } from './wholeTree'
 
 let f3Chart: any = null
 let f3Card: any = null
+let familyData: any[] = []
 
 const ROOT_ID = 'joao_filipe'
 
 async function main() {
   const res = await fetch(`${import.meta.env.BASE_URL}data.json`)
-  const data = await res.json()
+  familyData = await res.json()
 
-  f3Chart = f3.createChart('#FamilyChart', data)
+  f3Chart = f3.createChart('#FamilyChart', familyData)
 
   f3Card = f3Chart.setCardHtml()
     .setCardDisplay([['first name', 'last name'], ['born']])
@@ -30,6 +32,7 @@ async function main() {
   setupSearch()
   setupThemeToggle()
   setupPanelClose()
+  setupWholeTreeButton()
 }
 
 // family-chart's API for setting the main/focus person isn't consistent
@@ -91,6 +94,15 @@ function setupSearch() {
       showEdit: false,
     } as any,
   )
+}
+
+function setupWholeTreeButton() {
+  const toolbar = document.getElementById('toolbar')!
+  const btn = document.createElement('button')
+  btn.id = 'whole-tree-toggle'
+  btn.textContent = 'Whole Tree'
+  btn.addEventListener('click', () => showWholeTree(familyData))
+  toolbar.appendChild(btn)
 }
 
 main()

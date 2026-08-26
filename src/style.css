@@ -44,10 +44,6 @@ html, body {
   color: #111 !important;
 }
 
-#lang-toggle {
-  display: none !important;
-}
-
 /* ---------- Toolbar ---------- */
 #toolbar {
   position: fixed;
@@ -106,6 +102,55 @@ body:has(.f3.light-theme) #search-cont .f3-autocomplete-items {
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* ---------- Whole tree overlay ---------- */
+#whole-tree-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#whole-tree-panel {
+  background: #fff;
+  width: 95vw;
+  height: 92vh;
+  border-radius: 8px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#whole-tree-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+#whole-tree-scroll {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 40px 16px 16px;
+  box-sizing: border-box;
+}
+#whole-tree-scroll svg {
+  display: block;
+}
+#whole-tree-status {
+  font-family: sans-serif;
+  color: #333;
+  text-align: center;
+  margin-top: 40px;
+}
+
 /* ---------- Detail panel ---------- */
 #detail-panel {
   position: fixed;
@@ -143,29 +188,4 @@ body:has(.f3.light-theme) #detail-panel {
 }
 #detail-content dd {
   margin: 2px 0 0 0;
-}
-
-/* ---------- Virtual root + x2 badge hiding ----------
-   The JS sweep in main.ts is the primary mechanism (it catches links
-   by attribute AND by position). These CSS rules are a belt-and-
-   suspenders backup that hide the root card before JS runs. */
-
-.f3 [data-d="__root__"],
-.f3 [data-id="__root__"],
-.f3 g.card[data-d="__root__"],
-.f3 g.card[data-id="__root__"],
-.f3 g[data-d="__root__"],
-.f3 g[data-id="__root__"] {
-  display: none !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-.f3 .card-duplicate,
-.f3 .duplicate-indicator,
-.f3 .copy-count,
-.f3 text.duplicate,
-.f3 text.copy {
-  display: none !important;
-  opacity: 0 !important;
 }
