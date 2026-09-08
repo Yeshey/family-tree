@@ -41,9 +41,13 @@
   { "id": "maria_ags", "data": { "first name": "Maria Ascenção", "last name": "Gomes da Silva", "gender": "F" }, "rels": { "parents": ["jose_silva_pai", "maria_mae_martinho"] } },
   { "id": "olivia_gs", "data": { "first name": "Olivia", "last name": "Gomes da Silva", "gender": "F" }, "rels": { "parents": ["jose_silva_pai", "maria_mae_martinho"] } },
 
-  { "id": "jose_marques", "data": { "first name": "José", "last name": "Marques", "gender": "M", "job": "Barbeiro e agricultor; trabalhava vimes.", "notes": "Emigrou para o Curaçao; trabalhou numa refinaria." }, "rels": { "spouses": ["maria_rodrigues_cro"], "children": ["cidalia", "nivalda", "almerino", "zelia"] } },
-  { "id": "maria_rodrigues_cro", "data": { "first name": "Maria", "last name": "Rodrigues Cró", "gender": "F", "job": "Massagista e bordadeira; criava galinhas e vendia ovos.", "notes": "Fazia rezas para afastar o mau-olhado." }, "rels": { "spouses": ["jose_marques"], "children": ["cidalia", "nivalda", "almerino", "zelia"] } },
+  { "id": "jose_marques", "data": { "first name": "José", "last name": "Marques", "gender": "M", "job": "Barbeiro e agricultor; trabalhava vimes.", "notes": "Emigrou para o Curaçao; trabalhou numa refinaria." }, "rels": { "spouses": ["maria_rodrigues_cro"], "children": ["cidalia", "nivalda", "almerino", "zelia"], "parents": ["manuel_marques_pai", "joana_mercedes_marques"] } },
+  { "id": "maria_rodrigues_cro", "data": { "first name": "Maria", "last name": "Rodrigues Cró", "gender": "F", "job": "Massagista e bordadeira; criava galinhas e vendia ovos.", "notes": "Fazia rezas para afastar o mau-olhado." }, "rels": { "spouses": ["jose_marques"], "children": ["cidalia", "nivalda", "almerino", "zelia"], "parents": ["manuel_cro", "virginia_jesus"] } },
   { "id": "nivalda", "data": { "first name": "Nivalda", "last name": "Rodrigues Marques Rebolo", "gender": "F" }, "rels": { "parents": ["jose_marques", "maria_rodrigues_cro"] } },
+
+  { "id": "manuel_cro", "data": { "first name": "Manuel", "last name": "Cró", "gender": "M", "notes": "Bêbado; morreu porque adormeceu embriagado numa levada e, com o frio da água, apanhou uma pneumonia da qual morreu." }, "rels": { "spouses": ["virginia_jesus"], "children": ["maria_rodrigues_cro", "joao_silvino_cro"] } },
+  { "id": "virginia_jesus", "data": { "first name": "Virgínia", "last name": "de Jesus", "gender": "F" }, "rels": { "spouses": ["manuel_cro"], "children": ["maria_rodrigues_cro", "joao_silvino_cro"] } },
+  { "id": "joao_silvino_cro", "data": { "first name": "João Silvino", "last name": "Cró", "gender": "M" }, "rels": { "parents": ["manuel_cro", "virginia_jesus"] } },
 
   { "id": "almerino", "data": { "first name": "Almerino", "last name": "Rodrigues Marques", "gender": "M" }, "rels": { "parents": ["jose_marques", "maria_rodrigues_cro"], "spouses": ["odilia", "almerino_partner2"], "children": ["sandro_m", "carlo_m", "helder_m", "mariana_m2", "carolina_m2"] } },
   { "id": "odilia", "data": { "first name": "Odília", "last name": "", "gender": "F" }, "rels": { "spouses": ["almerino"], "children": ["sandro_m", "carlo_m", "helder_m"] } },
@@ -74,6 +78,36 @@
   { "id": "almerina_rc", "data": { "first name": "Almerina", "last name": "Rodrigues Costa", "gender": "F" }, "rels": { "parents": ["zelia", "celestino_r"], "spouses": ["jose_costa"], "children": ["liz_ancelly"] } },
   { "id": "jose_costa", "data": { "first name": "José", "last name": "Costa", "gender": "M" }, "rels": { "spouses": ["almerina_rc"], "children": ["liz_ancelly"] } },
   { "id": "liz_ancelly", "data": { "first name": "Liz-Ancelly", "last name": "da Silva Costa", "gender": "F", "notes": "Estudou Economia na Holanda." }, "rels": { "parents": ["almerina_rc", "jose_costa"] } },
+
+  { "id": "manuel_marques_pai", "data": { "first name": "Manuel", "last name": "Marques", "gender": "M" }, "rels": { "spouses": ["joana_mercedes_marques"], "children": ["jose_marques"] } },
+  { "id": "joana_mercedes_marques", "data": { "first name": "Joana das Mercês", "last name": "Marques", "gender": "F" }, "rels": { "spouses": ["manuel_marques_pai", "joana_partner2"], "children": ["jose_marques", "antonio_marques", "luis_marques", "joao_marques", "maria_marques", "joaninha"] } },
+  { "id": "joana_partner2", "data": { "first name": "--?--", "last name": "", "gender": "M", "notes": "Segundo companheiro de Joana das Mercês Marques; nome desconhecido." }, "rels": { "spouses": ["joana_mercedes_marques"], "children": ["antonio_marques", "luis_marques", "joao_marques", "maria_marques", "joaninha"] } },
+
+  { "id": "antonio_marques", "data": { "first name": "António", "last name": "Marques", "gender": "M" }, "rels": { "parents": ["joana_mercedes_marques", "joana_partner2"], "spouses": ["antonio_affair_partner", "conceicao_am"], "children": ["fatima_am", "antonio_am2", "elisabete_am", "olina_am"] } },
+  { "id": "antonio_affair_partner", "data": { "first name": "--?--", "last name": "", "gender": "F", "notes": "Teve um caso (não casamento) com António Marques; nome desconhecido." }, "rels": { "spouses": ["antonio_marques"], "children": ["fatima_am"] } },
+  { "id": "fatima_am", "data": { "first name": "Fátima", "last name": "Marques", "gender": "F" }, "rels": { "parents": ["antonio_marques", "antonio_affair_partner"] } },
+  { "id": "conceicao_am", "data": { "first name": "Conceição", "last name": "", "gender": "F" }, "rels": { "spouses": ["antonio_marques"], "children": ["antonio_am2", "elisabete_am", "olina_am"] } },
+  { "id": "antonio_am2", "data": { "first name": "António", "last name": "Marques", "gender": "M" }, "rels": { "parents": ["antonio_marques", "conceicao_am"] } },
+  { "id": "elisabete_am", "data": { "first name": "Elisabete", "last name": "Marques", "gender": "F" }, "rels": { "parents": ["antonio_marques", "conceicao_am"] } },
+  { "id": "olina_am", "data": { "first name": "Olina", "last name": "Marques", "gender": "F" }, "rels": { "parents": ["antonio_marques", "conceicao_am"], "spouses": ["jose_olina"], "children": ["rubina_olina"] } },
+  { "id": "jose_olina", "data": { "first name": "José", "last name": "", "gender": "M" }, "rels": { "spouses": ["olina_am"], "children": ["rubina_olina"] } },
+  { "id": "rubina_olina", "data": { "first name": "Rubina", "last name": "", "gender": "F" }, "rels": { "parents": ["olina_am", "jose_olina"], "spouses": ["rubina_husband"], "children": ["francisco_rubina"] } },
+  { "id": "rubina_husband", "data": { "first name": "--?--", "last name": "", "gender": "M", "notes": "Marido de Rubina; já falecido; nome desconhecido." }, "rels": { "spouses": ["rubina_olina"], "children": ["francisco_rubina"] } },
+  { "id": "francisco_rubina", "data": { "first name": "Francisco", "last name": "", "gender": "M" }, "rels": { "parents": ["rubina_olina", "rubina_husband"] } },
+
+  { "id": "luis_marques", "data": { "first name": "Luís", "last name": "Marques", "gender": "M" }, "rels": { "parents": ["joana_mercedes_marques", "joana_partner2"] } },
+
+  { "id": "joao_marques", "data": { "first name": "João", "last name": "Marques", "gender": "M", "notes": "Referido como \"João de cima\"." }, "rels": { "parents": ["joana_mercedes_marques", "joana_partner2"], "spouses": ["joao_marques_wife"], "children": ["lucia_jm", "bernardete_jm", "samuel_jm"] } },
+  { "id": "joao_marques_wife", "data": { "first name": "--?--", "last name": "", "gender": "F", "notes": "Esposa de João Marques; nome desconhecido." }, "rels": { "spouses": ["joao_marques"], "children": ["lucia_jm", "bernardete_jm", "samuel_jm"] } },
+  { "id": "lucia_jm", "data": { "first name": "Lúcia", "last name": "Marques", "gender": "F" }, "rels": { "parents": ["joao_marques", "joao_marques_wife"] } },
+  { "id": "bernardete_jm", "data": { "first name": "Bernardete", "last name": "Marques", "gender": "F" }, "rels": { "parents": ["joao_marques", "joao_marques_wife"] } },
+  { "id": "samuel_jm", "data": { "first name": "Samuel", "last name": "Marques", "gender": "--?--", "notes": "Fonte refere-se a estes três como \"filhas\" de João Marques, mas o nome Samuel sugere possível inconsistência na fonte." }, "rels": { "parents": ["joao_marques", "joao_marques_wife"] } },
+
+  { "id": "maria_marques", "data": { "first name": "Maria", "last name": "Marques", "gender": "F" }, "rels": { "parents": ["joana_mercedes_marques", "joana_partner2"] } },
+
+  { "id": "joaninha", "data": { "first name": "Joana", "last name": "Marques", "gender": "F", "notes": "Conhecida como \"Joaninha\"." }, "rels": { "parents": ["joana_mercedes_marques", "joana_partner2"], "spouses": ["joaninha_partner"], "children": ["leonel"] } },
+  { "id": "joaninha_partner", "data": { "first name": "--?--", "last name": "", "gender": "M", "notes": "Companheiro de Joaninha; nome desconhecido." }, "rels": { "spouses": ["joaninha"], "children": ["leonel"] } },
+  { "id": "leonel", "data": { "first name": "Leonel", "last name": "", "gender": "M" }, "rels": { "parents": ["joaninha", "joaninha_partner"] } },
 
   { "id": "herminio", "data": { "first name": "Herminio", "last name": "de Sousa Almeida", "gender": "M" }, "rels": { "spouses": ["clarinda"], "children": ["rui", "luis_miguel"], "parents": ["amador_almeida", "isabela_almeida"] } },
   { "id": "clarinda", "data": { "first name": "Clarinda", "last name": "Dos Santos Almeida", "gender": "F" }, "rels": { "spouses": ["herminio"], "children": ["rui", "luis_miguel"], "parents": ["benjamim_santos", "irene_santos"] } },
